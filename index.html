@@ -26,7 +26,7 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
             color: white;
             padding: 1rem 0;
             position: fixed;
@@ -40,6 +40,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .documents-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .documents-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: rgb(25, 55, 130);
+            border-color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
         }
 
         .logo {
@@ -49,18 +77,11 @@
             align-items: center;
         }
 
-        .logo::before {
-            content: 'L';
-            background: #ff6b6b;
-            color: white;
-            width: 40px;
+        .logo img {
             height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: auto;
             margin-right: 10px;
-            font-weight: bold;
+            border-radius: 8px;
         }
 
         .nav-links {
@@ -81,16 +102,23 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: url('Assets/Hero Background Image_Header.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 120px 0 80px;
+            padding: 120px 0 120px;
             text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
 
         .hero p {
@@ -99,7 +127,10 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.9;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
         }
 
         .cta-buttons {
@@ -107,6 +138,11 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .btn {
@@ -118,33 +154,40 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .btn-primary {
-            background: #ff6b6b;
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
             color: white;
+            border: 2px solid transparent;
         }
 
         .btn-primary:hover {
-            background: #ff5252;
+            background: linear-gradient(135deg, rgb(15, 45, 120) 0%, rgb(55, 95, 170) 100%);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(25, 55, 130, 0.3);
         }
 
         .btn-outline {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
-            border: 2px solid white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
         }
 
         .btn-outline:hover {
-            background: white;
-            color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            color: rgb(25, 55, 130);
+            border: 2px solid white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
 
         /* Services Section */
         .services {
             padding: 80px 0;
-            background: white;
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
         }
 
         .section-title {
@@ -165,6 +208,22 @@
             margin: 0 auto;
         }
 
+        .services .section-title h2 {
+            color: white;
+        }
+
+        .services .section-title p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .pricing .section-title h2 {
+            color: #333;
+        }
+
+        .pricing .section-title p {
+            color: #666;
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -173,30 +232,48 @@
         }
 
         .service-card {
-            background: white;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
         }
 
         .service-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .service-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .service-icon img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 15px;
+            border: 1px solid rgba(25, 55, 130, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-icon img:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            border-color: rgba(25, 55, 130, 0.4);
         }
 
         .service-card h3 {
@@ -219,21 +296,197 @@
             padding: 0.5rem 0;
             color: #555;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 2.5rem;
         }
 
         .service-features li::before {
-            content: '✓';
-            color: #ff6b6b;
-            font-weight: bold;
+            content: '';
+            background-image: url('Assets/Get_In_Touch/bullet_point.png');
+            background-size: 32px 32px;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 32px;
+            height: 32px;
             position: absolute;
             left: 0;
+            top: 0.3rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 50%, #ced4da 100%);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            color: white;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(25, 55, 130, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.2);
+        }
+
+        .pricing-card.featured:hover {
+            border-color: #ff6b6b;
+            box-shadow: 0 18px 45px rgba(255, 107, 107, 0.3);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-options {
+            margin-bottom: 2rem;
+        }
+
+        .pricing-tier {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-tier:last-child {
+            border-bottom: none;
+        }
+
+        .tier-name {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .tier-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .pricing-note {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .pricing-features li::before {
+            content: '';
+            background-image: url('Assets/Get_In_Touch/bullet_point.png');
+            background-size: 16px 16px;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 12px 0;
+            background: white;
+            color: rgb(25, 55, 130);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .pricing-btn:hover {
+            background: #f8f9fa;
+            color: rgb(15, 45, 120);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .pricing-card.featured .pricing-btn:hover {
+            background: #ff5252;
+            color: white;
         }
 
         /* Contact Section */
         .contact {
             padding: 80px 0;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 50%, #ced4da 100%);
         }
 
         .contact-grid {
@@ -249,16 +502,32 @@
         }
 
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 15px;
+            border: 1px solid rgba(25, 55, 130, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon img:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            border-color: rgba(25, 55, 130, 0.4);
         }
 
         .contact-item h3 {
@@ -289,26 +558,30 @@
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
+            justify-content: center;
         }
 
-        .footer-logo::before {
-            content: 'L';
-            background: #ff6b6b;
-            color: white;
-            width: 30px;
+        .footer-logo img {
             height: 30px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: auto;
             margin-right: 10px;
-            font-weight: bold;
+            border-radius: 5px;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+
+            .nav-right {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .documents-btn {
+                font-size: 0.8rem;
+                padding: 6px 12px;
             }
 
             .hero h1 {
@@ -353,19 +626,26 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">Liu Consultancy</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="logo">
+                <img src="Assets/Logo_Liu_Consultancy.png" alt="Liu Consultancy Logo">
+                Liu Consultancy
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="Header/documents.html" class="documents-btn">Documents</a>
+            </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1 class="fade-in">Liu Web Development</h1>
+            <h1 class="fade-in">Liu Consultants</h1>
             <p class="fade-in">Professional consultancy services combining cutting-edge technology with mathematical precision. We deliver excellence across web development, data analysis, and engineering solutions.</p>
             <div class="cta-buttons fade-in">
                 <a href="#contact" class="btn btn-primary">Start Your Project</a>
@@ -384,7 +664,7 @@
             
             <div class="services-grid">
                 <div class="service-card fade-in">
-                    <div class="service-icon">💻</div>
+                    <div class="service-icon"><img src="Assets/Web_Development_Icon.png" alt="Web Development"></div>
                     <h3>Web Development</h3>
                     <p>Modern, responsive websites and web applications built with the latest technologies.</p>
                     <ul class="service-features">
@@ -396,7 +676,7 @@
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">📊</div>
+                    <div class="service-icon"><img src="Assets/data_analystics_icon.png" alt="Data Analysis"></div>
                     <h3>Data Analysis</h3>
                     <p>Transform your data into actionable insights with advanced analytics and visualization.</p>
                     <ul class="service-features">
@@ -408,7 +688,7 @@
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">🧮</div>
+                    <div class="service-icon"><img src="Assets/Mathematical_Consultancy_Icon.png" alt="Mathematical Consultancy"></div>
                     <h3>Mathematical Consultancy</h3>
                     <p>Expert mathematical modeling and problem-solving for complex business challenges.</p>
                     <ul class="service-features">
@@ -420,7 +700,7 @@
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">📱</div>
+                    <div class="service-icon"><img src="Assets/app_development_icon.png" alt="App Development"></div>
                     <h3>App Development</h3>
                     <p>Native and cross-platform mobile applications for iOS and Android.</p>
                     <ul class="service-features">
@@ -432,19 +712,19 @@
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">🏗️</div>
-                    <h3>Civil Engineering</h3>
-                    <p>Professional civil estimating and design services for construction projects.</p>
+                    <div class="service-icon"><img src="Assets/Civil_Engineering_Service_Icon.png" alt="Civil Engineering"></div>
+                    <h3>Environmental & Civil Engineering</h3>
+                    <p>Comprehensive environmental and civil engineering services including hydrology, cost estimation, and environmental assessments.</p>
                     <ul class="service-features">
-                        <li>Cost Estimation</li>
-                        <li>Structural Design</li>
-                        <li>Project Planning</li>
-                        <li>CAD Drawings</li>
+                        <li>Environmental Engineering</li>
+                        <li>Hydrology & Water Resources</li>
+                        <li>Cost Estimation & Feasibility</li>
+                        <li>Environmental Impact Assessment</li>
                     </ul>
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">💰</div>
+                    <div class="service-icon"><img src="Assets/Financial_Growth_Icon.png" alt="Financial Planning & Wealth Management"></div>
                     <h3>Financial Planning & Wealth Management</h3>
                     <p>Comprehensive financial planning services tailored for Australian clients, backed by professional qualifications.</p>
                     <ul class="service-features">
@@ -460,6 +740,115 @@
         </div>
     </section>
 
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Pricing</h2>
+                <p>Transparent, competitive pricing for professional consultancy services in Brisbane, Australia.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Web Development</h3>
+                    <div class="pricing-options">
+                        <div class="pricing-tier">
+                            <span class="tier-name">Prototype Quote</span>
+                            <span class="tier-price">$500</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Frontend Development</span>
+                            <span class="tier-price">$2,500</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Backend Development</span>
+                            <span class="tier-price">$4,000</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Full Website + Support</span>
+                            <span class="tier-price">$8,000</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="pricing-btn">Get Quote</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Data Analysis</h3>
+                    <div class="pricing-options">
+                        <div class="pricing-tier">
+                            <span class="tier-name">Data Audit & Report</span>
+                            <span class="tier-price">$800</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Statistical Analysis</span>
+                            <span class="tier-price">$1,500</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Predictive Modeling</span>
+                            <span class="tier-price">$3,500</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Custom BI Dashboard</span>
+                            <span class="tier-price">$5,500</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="pricing-btn">Get Quote</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3 class="pricing-title">Mathematical Consultancy</h3>
+                    <div class="pricing-options">
+                        <div class="pricing-tier">
+                            <span class="tier-name">Problem Analysis</span>
+                            <span class="tier-price">$1,200</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Algorithm Development</span>
+                            <span class="tier-price">$3,000</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Mathematical Modeling</span>
+                            <span class="tier-price">$4,500</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <span class="tier-name">Optimization Solutions</span>
+                            <span class="tier-price">$7,500</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="pricing-btn">Get Quote</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="pricing-title">App Development</h3>
+                    <div class="pricing-price">Quote</div>
+                    <div class="pricing-period">on request</div>
+                    <div class="pricing-note">Starting from $90/hour</div>
+                    <a href="#contact" class="pricing-btn">Get Quote</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Environmental Engineering</h3>
+                    <div class="pricing-price">$110</div>
+                    <div class="pricing-period">per hour</div>
+                    <a href="#contact" class="pricing-btn">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Financial Planning</h3>
+                    <div class="pricing-price">$200</div>
+                    <div class="pricing-period">per hour</div>
+                    <a href="#contact" class="pricing-btn">Get Started</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="color: #666; margin-bottom: 1rem;">All prices in Australian Dollars (AUD). Project quotes available upon request.</p>
+                <a href="#contact" class="btn btn-primary">Request Custom Quote</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -470,26 +859,26 @@
             
             <div class="contact-grid">
                 <div class="contact-item fade-in">
-                    <div class="contact-icon">📧</div>
+                    <div class="contact-icon"><img src="Assets/Get_In_Touch/Email_Us_Button_website_UI_Email.png" alt="Email"></div>
                     <h3>Email Us</h3>
                     <p>contact@liuconsultancy.com</p>
                 </div>
                 
                 <div class="contact-item fade-in">
-                    <div class="contact-icon">📞</div>
+                    <div class="contact-icon"><img src="Assets/Get_In_Touch/Contact_Us_Button_website_UI_phone.png" alt="Phone"></div>
                     <h3>Call Us</h3>
-                    <p>+1 (555) 123-4567</p>
+                    <p>+61 470 499 136</p>
                 </div>
                 
                 <div class="contact-item fade-in">
-                    <div class="contact-icon">📍</div>
+                    <div class="contact-icon"><img src="Assets/Get_In_Touch/Visit_Us_Icon.png" alt="Visit Us"></div>
                     <h3>Visit Us</h3>
-                    <p>123 Business Ave, Suite 100</p>
+                    <p>44 Greenore Street, Bracken Ridge, 4017</p>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 2rem;">
-                <a href="mailto:contact@liuconsultancy.com.au" class="btn btn-primary">Schedule Consultation</a>
+                <a href="mailto:contact@liuconsultancy.com" class="btn btn-primary">Schedule Consultation</a>
             </div>
         </div>
     </section>
@@ -497,16 +886,13 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
                 <!-- About Liu Consultancy -->
                 <div>
                     <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">About Liu Consultancy</h4>
                     <ul style="list-style: none; line-height: 1.8;">
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">About Us</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Our Team</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Professional Qualifications</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Case Studies & Portfolio</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Client Testimonials</a></li>
+                        <li><a href="Footer/about-us.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">About Us</a></li>
+                        <li><a href="Footer/professional-qualifications.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Professional Qualifications</a></li>
                     </ul>
                 </div>
 
@@ -514,12 +900,10 @@
                 <div>
                     <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Our Services</h4>
                     <ul style="list-style: none; line-height: 1.8;">
-                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Web Development</a></li>
-                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Data Analysis</a></li>
-                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Mathematical Consultancy</a></li>
-                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">App Development</a></li>
-                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Civil Engineering & Design</a></li>
-                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Financial Planning</a></li>
+                        <li><a href="Footer/web-development.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Web Development</a></li>
+                        <li><a href="Footer/mathematical-consultancy.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Mathematical Consultancy</a></li>
+                        <li><a href="Footer/environmental-engineering.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Environmental Engineering</a></li>
+                        <li><a href="Footer/financial-planning.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Financial Planning</a></li>
                     </ul>
                 </div>
 
@@ -527,23 +911,8 @@
                 <div>
                     <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Resources</h4>
                     <ul style="list-style: none; line-height: 1.8;">
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Blog & Insights</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Technical Resources</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Financial Planning Guides</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Industry Reports</a></li>
-                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Free Consultations</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact & Connect -->
-                <div>
-                    <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Connect With Us</h4>
-                    <ul style="list-style: none; line-height: 1.8;">
-                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Contact Us</a></li>
-                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Get a Quote</a></li>
-                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Schedule Consultation</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">LinkedIn</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Newsletter</a></li>
+                        <li><a href="Footer/free-consultations.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Free Consultations</a></li>
+                        <li><a href="Footer/pricing.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Pricing</a></li>
                     </ul>
                 </div>
             </div>
@@ -562,7 +931,10 @@
 
             <!-- Legal & Company Info -->
             <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1.5rem; text-align: center;">
-                <div class="footer-logo" style="margin-bottom: 1rem;">Liu Consultancy</div>
+                <div class="footer-logo" style="margin-bottom: 1rem;">
+                    <img src="Assets/Logo_Liu_Consultancy.png" alt="Liu Consultancy Logo">
+                    Liu Consultancy
+                </div>
                 <p style="margin-bottom: 1rem; font-size: 0.9rem;">Delivering excellence through technology, engineering, and financial expertise.</p>
                 
                 <!-- Legal Links -->
