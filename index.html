@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liu Web Development - Professional Consultancy Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: 'L';
+            background: #ff6b6b;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #ff6b6b;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .contact-item p {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo::before {
+            content: 'L';
+            background: #ff6b6b;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Liu Consultancy</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="fade-in">Liu Web Development</h1>
+            <p class="fade-in">Professional consultancy services combining cutting-edge technology with mathematical precision. We deliver excellence across web development, data analysis, and engineering solutions.</p>
+            <div class="cta-buttons fade-in">
+                <a href="#contact" class="btn btn-primary">Start Your Project</a>
+                <a href="#services" class="btn btn-outline">View Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions tailored to your business needs, delivered with expertise and precision.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Modern, responsive websites and web applications built with the latest technologies.</p>
+                    <ul class="service-features">
+                        <li>React & Next.js Development</li>
+                        <li>E-commerce Solutions</li>
+                        <li>Custom Web Applications</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3>Data Analysis</h3>
+                    <p>Transform your data into actionable insights with advanced analytics and visualization.</p>
+                    <ul class="service-features">
+                        <li>Statistical Analysis</li>
+                        <li>Data Visualization</li>
+                        <li>Predictive Modeling</li>
+                        <li>Business Intelligence</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🧮</div>
+                    <h3>Mathematical Consultancy</h3>
+                    <p>Expert mathematical modeling and problem-solving for complex business challenges.</p>
+                    <ul class="service-features">
+                        <li>Mathematical Modeling</li>
+                        <li>Algorithm Development</li>
+                        <li>Optimization Solutions</li>
+                        <li>Research & Development</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">📱</div>
+                    <h3>App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android.</p>
+                    <ul class="service-features">
+                        <li>iOS & Android Apps</li>
+                        <li>Cross-platform Solutions</li>
+                        <li>UI/UX Design</li>
+                        <li>App Store Deployment</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Civil Engineering</h3>
+                    <p>Professional civil estimating and design services for construction projects.</p>
+                    <ul class="service-features">
+                        <li>Cost Estimation</li>
+                        <li>Structural Design</li>
+                        <li>Project Planning</li>
+                        <li>CAD Drawings</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">💰</div>
+                    <h3>Financial Planning & Wealth Management</h3>
+                    <p>Comprehensive financial planning services tailored for Australian clients, backed by professional qualifications.</p>
+                    <ul class="service-features">
+                        <li>Retirement & Superannuation Planning</li>
+                        <li>Investment Strategy & Portfolio Management</li>
+                        <li>Tax Planning & Strategy</li>
+                        <li>Estate Planning & Wealth Transfer</li>
+                        <li>Insurance & Risk Management</li>
+                        <li>SMSF Advice & Administration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Ready to start your project? Let's discuss how we can help you achieve your goals.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p>contact@liuconsultancy.com</p>
+                </div>
+                
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">📍</div>
+                    <h3>Visit Us</h3>
+                    <p>123 Business Ave, Suite 100</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="mailto:contact@liuconsultancy.com.au" class="btn btn-primary">Schedule Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <!-- About Liu Consultancy -->
+                <div>
+                    <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">About Liu Consultancy</h4>
+                    <ul style="list-style: none; line-height: 1.8;">
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">About Us</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Our Team</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Professional Qualifications</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Case Studies & Portfolio</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Client Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Our Services</h4>
+                    <ul style="list-style: none; line-height: 1.8;">
+                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Web Development</a></li>
+                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Data Analysis</a></li>
+                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Mathematical Consultancy</a></li>
+                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">App Development</a></li>
+                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Civil Engineering & Design</a></li>
+                        <li><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Financial Planning</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Resources</h4>
+                    <ul style="list-style: none; line-height: 1.8;">
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Blog & Insights</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Technical Resources</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Financial Planning Guides</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Industry Reports</a></li>
+                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Free Consultations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Connect -->
+                <div>
+                    <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Connect With Us</h4>
+                    <ul style="list-style: none; line-height: 1.8;">
+                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Contact Us</a></li>
+                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Get a Quote</a></li>
+                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Schedule Consultation</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">LinkedIn</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Professional Credentials Bar -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">
+                        <strong>Professional Qualifications:</strong> Civil & Geotechnical Engineering • Kaplan Financial Planning Certification
+                    </p>
+                    <p style="font-size: 0.85rem; opacity: 0.7;">
+                        Proudly serving Australian businesses with multi-disciplinary expertise
+                    </p>
+                </div>
+            </div>
+
+            <!-- Legal & Company Info -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1.5rem; text-align: center;">
+                <div class="footer-logo" style="margin-bottom: 1rem;">Liu Consultancy</div>
+                <p style="margin-bottom: 1rem; font-size: 0.9rem;">Delivering excellence through technology, engineering, and financial expertise.</p>
+                
+                <!-- Legal Links -->
+                <div style="margin-bottom: 1rem;">
+                    <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; margin: 0 1rem;">Privacy Policy</a>
+                    <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; margin: 0 1rem;">Terms & Conditions</a>
+                    <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; margin: 0 1rem;">Financial Services Guide</a>
+                    <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; margin: 0 1rem;">Compliance</a>
+                </div>
+
+                <!-- Copyright & Disclaimers -->
+                <p style="opacity: 0.6; font-size: 0.8rem; margin-bottom: 0.5rem;">&copy; 2024 Liu Consultancy. All rights reserved. ABN: 12 345 678 901</p>
+                <p style="opacity: 0.5; font-size: 0.75rem; line-height: 1.4;">
+                    Financial advice is general in nature and does not take into account your personal financial situation, objectives or needs. 
+                    Consider whether our services are appropriate for you and seek professional advice where necessary.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.service-card, .contact-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
