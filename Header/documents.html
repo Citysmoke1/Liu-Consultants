@@ -26,7 +26,7 @@
         }
 
         .header {
-            background: url('../Assets/Document_Images/Document_Hero_background.png') center center/cover no-repeat;
+            background: url('../Assets/Documents/Document_Hero_background.png') center center/cover no-repeat;
             color: white;
             padding: 3rem 0;
             text-align: center;
@@ -261,12 +261,30 @@
         }
 
         .contact-cta {
-            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
+            background: url('../Assets/Documents/Document_Hero_background.png') center center/cover no-repeat;
             color: white;
             padding: 3rem 2rem;
             border-radius: 15px;
             text-align: center;
             margin-top: 3rem;
+            position: relative;
+        }
+
+        .contact-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(25, 55, 130, 0.7);
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .contact-cta * {
+            position: relative;
+            z-index: 2;
         }
 
         .contact-cta h3 {
@@ -363,7 +381,7 @@
                     <div class="document-type">Web Development</div>
                 </div>
                 <div class="document-actions">
-                    <a href="../Assets/Documents/TukTukChatBot.url" class="btn btn-primary" target="_blank">📄 View Website</a>
+                    <a href="https://tuktukrental.com/" class="btn btn-primary" target="_blank">📄 View Website</a>
 
                 </div>
             </div>
@@ -435,7 +453,7 @@
                 <div class="document-header">
                     <div class="document-icon"><img src="../Assets/Document_Images/Moovement.comTagAnalysis_Icon_Documents.png" alt="Cattle Tag Analysis"></div>
                     <div>
-                        <div class="document-title">Movement.com Cattle Tag Analysis</div>
+                        <div class="document-title">mOOvement.com Cattle Tag Analysis</div>
                         <div class="document-category">Geospatial Analysis</div>
                     </div>
                 </div>

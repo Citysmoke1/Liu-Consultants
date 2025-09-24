@@ -187,7 +187,24 @@
         /* Services Section */
         .services {
             padding: 80px 0;
-            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
+            background: url('Assets/Documents/Document_Hero_background.png') center center/cover no-repeat;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(25, 55, 130, 0.7);
+            z-index: 1;
+        }
+
+        .services .container {
+            position: relative;
+            z-index: 2;
         }
 
         .section-title {
@@ -226,9 +243,12 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .service-card {
@@ -320,9 +340,12 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .pricing-card {
@@ -688,14 +711,14 @@
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon"><img src="Assets/Mathematical_Consultancy_Icon.png" alt="Mathematical Consultancy"></div>
-                    <h3>Mathematical Consultancy</h3>
-                    <p>Expert mathematical modeling and problem-solving for complex business challenges.</p>
+                    <div class="service-icon"><img src="Assets/Mathematical_Consultancy_Icon.png" alt="Financial Modelling"></div>
+                    <h3>Financial Modelling</h3>
+                    <p>Advanced financial modeling and quantitative analysis for investment decisions and risk management.</p>
                     <ul class="service-features">
-                        <li>Mathematical Modeling</li>
-                        <li>Algorithm Development</li>
-                        <li>Optimization Solutions</li>
-                        <li>Research & Development</li>
+                        <li>Portfolio Optimization</li>
+                        <li>Risk Assessment Models</li>
+                        <li>Financial Forecasting</li>
+                        <li>Investment Analysis</li>
                     </ul>
                 </div>
 
@@ -711,31 +734,6 @@
                     </ul>
                 </div>
 
-                <div class="service-card fade-in">
-                    <div class="service-icon"><img src="Assets/Civil_Engineering_Service_Icon.png" alt="Civil Engineering"></div>
-                    <h3>Environmental & Civil Engineering</h3>
-                    <p>Comprehensive environmental and civil engineering services including hydrology, cost estimation, and environmental assessments.</p>
-                    <ul class="service-features">
-                        <li>Environmental Engineering</li>
-                        <li>Hydrology & Water Resources</li>
-                        <li>Cost Estimation & Feasibility</li>
-                        <li>Environmental Impact Assessment</li>
-                    </ul>
-                </div>
-
-                <div class="service-card fade-in">
-                    <div class="service-icon"><img src="Assets/Financial_Growth_Icon.png" alt="Geospatial Analysis & GIS"></div>
-                    <h3>Geospatial Analysis & GIS</h3>
-                    <p>Advanced spatial analysis and geographic information systems for data-driven insights and strategic planning.</p>
-                    <ul class="service-features">
-                        <li>GIS Mapping & Spatial Analysis</li>
-                        <li>Location Intelligence & Site Selection</li>
-                        <li>Remote Sensing & Image Analysis</li>
-                        <li>Cadastral & Property Mapping</li>
-                        <li>Infrastructure & Utility Planning</li>
-                        <li>Environmental & Resource Mapping</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
@@ -753,101 +751,33 @@
                     <h3 class="pricing-title">Web Development</h3>
                     <div class="pricing-price">$145</div>
                     <div class="pricing-period">per hour</div>
-                    <div class="pricing-note">Indicative project prices:</div>
-                    <div class="pricing-options">
-                        <div class="pricing-tier">
-                            <span class="tier-name">Prototype Quote</span>
-                            <span class="tier-price">$500</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Frontend Development</span>
-                            <span class="tier-price">$2,500</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Backend Development</span>
-                            <span class="tier-price">$4,000</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Full Website + Support</span>
-                            <span class="tier-price">$8,000</span>
-                        </div>
-                    </div>
-                    <a href="#contact" class="pricing-btn">Get Quote</a>
+                    <div class="pricing-note">Project pricing based on scope and requirements</div>
+                    <a href="contact.html" class="pricing-btn">Get Quote</a>
                 </div>
 
                 <div class="pricing-card">
                     <h3 class="pricing-title">Data Analysis</h3>
                     <div class="pricing-price">$135</div>
                     <div class="pricing-period">per hour</div>
-                    <div class="pricing-note">Indicative project prices:</div>
-                    <div class="pricing-options">
-                        <div class="pricing-tier">
-                            <span class="tier-name">Data Audit & Report</span>
-                            <span class="tier-price">$800</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Statistical Analysis</span>
-                            <span class="tier-price">$1,500</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Predictive Modeling</span>
-                            <span class="tier-price">$3,500</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Custom BI Dashboard</span>
-                            <span class="tier-price">$5,500</span>
-                        </div>
-                    </div>
-                    <a href="#contact" class="pricing-btn">Get Quote</a>
+                    <div class="pricing-note">Custom pricing based on data complexity and deliverables</div>
+                    <a href="contact.html" class="pricing-btn">Get Quote</a>
                 </div>
 
                 <div class="pricing-card featured">
                     <div class="pricing-badge">Most Popular</div>
-                    <h3 class="pricing-title">Financial Mathematical Services</h3>
-                    <div class="pricing-price">$125</div>
+                    <h3 class="pricing-title">Financial Modelling</h3>
+                    <div class="pricing-price">$155</div>
                     <div class="pricing-period">per hour</div>
-                    <div class="pricing-note">Indicative project prices:</div>
-                    <div class="pricing-options">
-                        <div class="pricing-tier">
-                            <span class="tier-name">Problem Analysis</span>
-                            <span class="tier-price">$1,200</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Algorithm Development</span>
-                            <span class="tier-price">$3,000</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Mathematical Modeling</span>
-                            <span class="tier-price">$4,500</span>
-                        </div>
-                        <div class="pricing-tier">
-                            <span class="tier-name">Optimization Solutions</span>
-                            <span class="tier-price">$7,500</span>
-                        </div>
-                    </div>
-                    <a href="#contact" class="pricing-btn">Get Quote</a>
+                    <div class="pricing-note">Pricing tailored to model complexity and business requirements</div>
+                    <a href="contact.html" class="pricing-btn">Get Quote</a>
                 </div>
 
                 <div class="pricing-card">
                     <h3 class="pricing-title">App Development</h3>
-                    <div class="pricing-price">$125</div>
+                    <div class="pricing-price">$135</div>
                     <div class="pricing-period">per hour</div>
-                    <div class="pricing-note">Quote on request</div>
-                    <a href="#contact" class="pricing-btn">Get Quote</a>
-                </div>
-
-                <div class="pricing-card">
-                    <h3 class="pricing-title">Environmental Engineering</h3>
-                    <div class="pricing-price">$125</div>
-                    <div class="pricing-period">per hour</div>
-                    <a href="#contact" class="pricing-btn">Get Started</a>
-                </div>
-
-                <div class="pricing-card">
-                    <h3 class="pricing-title">Geospatial Analysis</h3>
-                    <div class="pricing-price">$125</div>
-                    <div class="pricing-period">per hour</div>
-                    <a href="#contact" class="pricing-btn">Get Started</a>
+                    <div class="pricing-note">Quote based on platform, features, and project timeline</div>
+                    <a href="contact.html" class="pricing-btn">Get Quote</a>
                 </div>
             </div>
 
@@ -870,7 +800,7 @@
                 <div class="contact-item fade-in">
                     <div class="contact-icon"><img src="Assets/Get_In_Touch/Email_Us_Button_website_UI_Email.png" alt="Email"></div>
                     <h3>Email Us</h3>
-                    <p>contact@liuconsultancy.com</p>
+                    <p>isaac@liuconsultants.com</p>
                 </div>
                 
                 <div class="contact-item fade-in">
