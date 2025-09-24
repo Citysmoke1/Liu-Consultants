@@ -3,10 +3,541 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documents - Liu Consultancy</title>
+    <title>Project Documents - Liu Consultancy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e9ecef 0%, #ced4da 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background: url('../Assets/Document_Images/Document_Hero_background.png') center center/cover no-repeat;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(25, 55, 130, 0.3);
+            z-index: 1;
+        }
+
+        .header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: rgb(25, 55, 130);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-link:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid rgb(25, 55, 130);
+            color: rgb(25, 55, 130);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgb(25, 55, 130);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(25, 55, 130, 0.3);
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .document-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .document-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 2px;
+        }
+
+        .document-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .document-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: rgb(25, 55, 130);
+            margin-bottom: 0.5rem;
+        }
+
+        .document-category {
+            background: #ff6b6b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .document-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .document-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .document-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .document-type {
+            background: #f8f9fa;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: rgb(25, 55, 130);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: rgb(20, 45, 110);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: white;
+            color: rgb(25, 55, 130);
+            border: 2px solid rgb(25, 55, 130);
+        }
+
+        .btn-outline:hover {
+            background: rgb(25, 55, 130);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-cta {
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .contact-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .document-card {
+                padding: 1.5rem;
+            }
+
+            .document-actions {
+                flex-direction: column;
+            }
+
+            .filter-tabs {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Documents</h1>
-    <p>Documents page content will be added here.</p>
+    <a href="../index.html" class="back-link">← Back to Home</a>
+
+    <div class="header">
+        <div class="container">
+            <h1>Project Documents & Case Studies</h1>
+            <p>Explore our portfolio of successful projects across web development, data analysis, mathematical consultancy, engineering, and geospatial analysis.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="web-dev">Web Development</button>
+            <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
+            <button class="filter-btn" data-filter="math-consultancy">Mathematical</button>
+            <button class="filter-btn" data-filter="engineering">Engineering</button>
+            <button class="filter-btn" data-filter="geospatial">Geospatial</button>
+            <button class="filter-btn" data-filter="app-dev">App Development</button>
+        </div>
+
+        <div class="documents-grid">
+            <div class="document-card fade-in" data-category="web-dev">
+                <div class="document-header">
+                    <div class="document-icon"><img src="../Assets/Document_Images/TukTukRental_Icon_Documents.png" alt="TukTuk Rental AI Chatbot"></div>
+                    <div>
+                        <div class="document-title">TukTuk Rental AI Chatbot</div>
+                        <div class="document-category">Web Development</div>
+                    </div>
+                </div>
+                <div class="document-description">
+                    AI-powered chatbot development for tuktukrental.com featuring natural language processing, booking integration, and multilingual support for enhanced customer experience.
+                </div>
+                <div class="document-details">
+                    <div class="document-date">📅 March 2024</div>
+                    <div class="document-type">Case Study</div>
+                </div>
+                <div class="document-actions">
+                    <a href="#" class="btn btn-primary">📄 View Website</a>
+                    
+                </div>
+            </div>
+
+            <div class="document-card fade-in" data-category="data-analysis">
+                <div class="document-header">
+                    <div class="document-icon"><img src="../Assets/Document_Images/RetailSales_Icon_Documents.png" alt="Retail Sales Forecasting"></div>
+                    <div>
+                        <div class="document-title">Retail Sales Forecasting Model</div>
+                        <div class="document-category">Data Analysis</div>
+                    </div>
+                </div>
+                <div class="document-description">
+                    Statistical analysis and predictive modeling for retail chain optimization, implementing machine learning algorithms to forecast seasonal demand patterns and inventory requirements.
+                </div>
+                <div class="document-details">
+                    <div class="document-date">📅 February 2024</div>
+                    <div class="document-type">Technical Report</div>
+                </div>
+                <div class="document-actions">
+                    <a href="#" class="btn btn-primary">📄 View Report</a>
+                    
+                </div>
+            </div>
+
+            <div class="document-card fade-in" data-category="math-consultancy">
+                <div class="document-header">
+                    <div class="document-icon"><img src="../Assets/Document_Images/FinancialRisk_Icon_Documents.png" alt="Financial Risk Assessment"></div>
+                    <div>
+                        <div class="document-title">Financial Risk Assessment Algorithm</div>
+                        <div class="document-category">Mathematical Consultancy</div>
+                    </div>
+                </div>
+                <div class="document-description">
+                    Development of a sophisticated mathematical model for portfolio risk assessment using stochastic calculus and Monte Carlo simulations for investment management firm.
+                </div>
+                <div class="document-details">
+                    <div class="document-date">📅 January 2024</div>
+                    <div class="document-type">Mathematical Model</div>
+                </div>
+                <div class="document-actions">
+                    <a href="#" class="btn btn-primary">📄 View Model</a>
+                    
+                </div>
+            </div>
+
+            <div class="document-card fade-in" data-category="engineering">
+                <div class="document-header">
+                    <div class="document-icon"><img src="../Assets/Document_Images/TailingsBreach_Icon_Documents.png" alt="Tailings Dam Breach"></div>
+                    <div>
+                        <div class="document-title">Tailings Dam Breach Modelling</div>
+                        <div class="document-category">Environmental Engineering</div>
+                    </div>
+                </div>
+                <div class="document-description">
+                    Comprehensive dam breach analysis and tailings flow modelling using advanced hydraulic simulation software to assess potential environmental impact and emergency response planning.
+                </div>
+                <div class="document-details">
+                    <div class="document-date">📅 December 2023</div>
+                    <div class="document-type">Engineering Report</div>
+                </div>
+                <div class="document-actions">
+                    <a href="#" class="btn btn-primary">📄 View Report</a>
+                    
+                </div>
+            </div>
+
+            <div class="document-card fade-in" data-category="geospatial">
+                <div class="document-header">
+                    <div class="document-icon"><img src="../Assets/Document_Images/Moovement.comTagAnalysis_Icon_Documents.png" alt="Cattle Tag Analysis"></div>
+                    <div>
+                        <div class="document-title">Movement.com Cattle Tag Analysis</div>
+                        <div class="document-category">Geospatial Analysis</div>
+                    </div>
+                </div>
+                <div class="document-description">
+                    GPS tracking analysis and movement pattern assessment for livestock management using satellite data and GIS analytics to optimize grazing patterns and monitor animal welfare.
+                </div>
+                <div class="document-details">
+                    <div class="document-date">📅 November 2023</div>
+                    <div class="document-type">GIS Study</div>
+                </div>
+                <div class="document-actions">
+                    <a href="#" class="btn btn-primary">📄 View Analysis</a>
+                    
+                </div>
+            </div>
+
+            <div class="document-card fade-in" data-category="engineering">
+                <div class="document-header">
+                    <div class="document-icon"><img src="../Assets/Document_Images/Erosion_Icon_Documents.png" alt="Sediment and Erosion Control"></div>
+                    <div>
+                        <div class="document-title">Sediment and Erosion Control Plan</div>
+                        <div class="document-category">Environmental Engineering</div>
+                    </div>
+                </div>
+                <div class="document-description">
+                    Comprehensive sediment and erosion management strategy for construction sites including RUSLE modelling, sediment basin design, and environmental protection measures.
+                </div>
+                <div class="document-details">
+                    <div class="document-date">📅 October 2023</div>
+                    <div class="document-type">Management Plan</div>
+                </div>
+                <div class="document-actions">
+                    <a href="#" class="btn btn-primary">📄 View Plan</a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-cta">
+            <h3>Ready to Start Your Project?</h3>
+            <p>These examples represent just a fraction of our capabilities. Let's discuss how we can help bring your vision to life with our multi-disciplinary expertise.</p>
+            <a href="../contact.html" class="btn" style="background: white; color: rgb(25, 55, 130); font-weight: 600;">Get Started Today</a>
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const documentCards = document.querySelectorAll('.document-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                documentCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (cardCategory === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Fade in animation on load
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.document-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                }, index * 100);
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
