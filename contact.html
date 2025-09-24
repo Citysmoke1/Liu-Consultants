@@ -169,6 +169,7 @@
         input[type="text"],
         input[type="email"],
         input[type="tel"],
+        input[type="file"],
         select,
         textarea {
             width: 100%;
@@ -193,6 +194,34 @@
             min-height: 120px;
         }
 
+        input[type="file"] {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        input[type="file"]::-webkit-file-upload-button {
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        input[type="file"]::-webkit-file-upload-button:hover {
+            background: linear-gradient(135deg, rgb(15, 45, 120) 0%, rgb(55, 95, 170) 100%);
+        }
+
+        .file-help {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
         .submit-btn {
             background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
             color: white;
@@ -210,6 +239,44 @@
             background: linear-gradient(135deg, rgb(15, 45, 120) 0%, rgb(55, 95, 170) 100%);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(25, 55, 130, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            text-align: center;
+            animation: slideInDown 0.3s ease;
+        }
+
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .contact-info h2 {
@@ -353,7 +420,7 @@
                 <!-- Contact Form -->
                 <div class="contact-form-section">
                     <h2 class="form-title">Send Us a Message</h2>
-                    <form id="contactForm" action="#" method="POST">
+                    <form id="contactForm" action="https://formspree.io/f/mdkwkkwv" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name *</label>
@@ -413,6 +480,12 @@
                             <textarea id="message" name="message" placeholder="Please describe your project requirements, timeline, and any specific questions you may have..." required></textarea>
                         </div>
 
+                        <div class="form-group">
+                            <label for="upload">Attach Files</label>
+                            <input type="file" id="upload" name="upload" multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.gif,.zip,.rar">
+                            <small class="file-help">Optional: Attach relevant documents, images, or project files (Max 10MB per file)</small>
+                        </div>
+
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
@@ -427,7 +500,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Email Us</h3>
-                            <p>contact@liuconsultancy.com</p>
+                            <p>isaac@liuconsultants.com</p>
                             <p>We typically respond within 24 hours</p>
                         </div>
                     </div>
@@ -480,27 +553,94 @@
     </footer>
 
     <script>
-        // Form submission handling
+        // Form submission handling with Formspree
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
+            const form = this;
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+
             // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            const formData = new FormData(form);
 
             // Simple validation
-            if (!data.firstName || !data.lastName || !data.email || !data.message) {
-                alert('Please fill in all required fields.');
+            if (!formData.get('firstName') || !formData.get('lastName') ||
+                !formData.get('email') || !formData.get('message')) {
+                showMessage('Please fill in all required fields.', 'error');
                 return;
             }
 
-            // Here you would typically send the data to your server
-            console.log('Form data:', data);
-            alert('Thank you for your message! We will get back to you within 24 hours.');
+            // Validate file size (10MB max per file)
+            const fileInput = form.querySelector('#upload');
+            if (fileInput.files.length > 0) {
+                const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+                for (let file of fileInput.files) {
+                    if (file.size > maxSize) {
+                        showMessage(`File "${file.name}" is too large. Maximum file size is 10MB.`, 'error');
+                        return;
+                    }
+                }
+            }
 
-            // Reset form
-            this.reset();
+            // Update button state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Submit to Formspree via AJAX
+            fetch('https://formspree.io/f/mdkwkkwv', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
+                    form.reset();
+                } else {
+                    return response.json().then(data => {
+                        if (Object.hasOwnProperty.call(data, 'errors')) {
+                            showMessage(data["errors"].map(error => error["message"]).join(", "), 'error');
+                        } else {
+                            showMessage('There was a problem submitting your form. Please try again.', 'error');
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('There was a problem submitting your form. Please try again.', 'error');
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            });
         });
+
+        // Function to show success/error messages
+        function showMessage(message, type) {
+            // Remove existing message if any
+            const existingMessage = document.querySelector('.form-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            // Create message element
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `form-message ${type}`;
+            messageDiv.textContent = message;
+
+            // Insert before the form
+            const form = document.getElementById('contactForm');
+            form.parentNode.insertBefore(messageDiv, form);
+
+            // Remove message after 8 seconds
+            setTimeout(() => {
+                if (messageDiv.parentNode) {
+                    messageDiv.remove();
+                }
+            }, 8000);
+        }
     </script>
 </body>
 </html>
