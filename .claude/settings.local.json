@@ -6,7 +6,8 @@
       "Bash(git commit:*)",
       "mcp__ide__getDiagnostics",
       "Bash(start index.html)",
-      "Bash(start \"Header\\documents.html\")"
+      "Bash(start \"Header\\documents.html\")",
+      "WebFetch(domain:www.tuktukrental.com)"
     ],
     "deny": [],
     "ask": []
