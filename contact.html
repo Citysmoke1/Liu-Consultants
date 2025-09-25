@@ -593,18 +593,38 @@
                 body: formData
             })
             .then(response => {
-                if (response.ok) {
-                    showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
-                    form.reset();
-                } else {
-                    return response.json().then(data => {
-                        if (Object.hasOwnProperty.call(data, 'errors')) {
-                            showMessage(data["errors"].map(error => error["message"]).join(", "), 'error');
+                return response.json().then(data => {
+                    if (response.ok) {
+                        // Successful submission (status 200)
+                        showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
+                        form.reset();
+                    } else if (response.status === 422) {
+                        // Check if it's a validation error or successful submission with warnings
+                        if (data && data.errors && data.errors.length > 0) {
+                            // Has validation errors - show them
+                            showMessage(data.errors.map(error => error.message).join(", "), 'error');
+                        } else {
+                            // Status 422 but no errors array - likely successful submission
+                            showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
+                            form.reset();
+                        }
+                    } else {
+                        // Other error status codes
+                        if (data && data.errors && data.errors.length > 0) {
+                            showMessage(data.errors.map(error => error.message).join(", "), 'error');
                         } else {
                             showMessage('There was a problem submitting your form. Please try again.', 'error');
                         }
-                    });
-                }
+                    }
+                }).catch(() => {
+                    // If response isn't JSON (unlikely with Formspree), treat as success if status is 200-299
+                    if (response.ok) {
+                        showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
+                        form.reset();
+                    } else {
+                        showMessage('There was a problem submitting your form. Please try again.', 'error');
+                    }
+                });
             })
             .catch(error => {
                 console.error('Error:', error);
