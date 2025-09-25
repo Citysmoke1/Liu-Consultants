@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Documents - Liu Consultancy</title>
+    <title>Featured Projects - Liu Consultancy</title>
     <style>
         * {
             margin: 0;
@@ -15,237 +15,232 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #e9ecef 0%, #ced4da 100%);
-            min-height: 100vh;
+            background: #f8f9fa;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .header {
-            background: url('../Assets/Documents/Document_Hero_background.png') center center/cover no-repeat;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-            margin-bottom: 3rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(25, 55, 130, 0.3);
-            z-index: 1;
-        }
-
-        .header .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .back-link {
             position: fixed;
             top: 20px;
             left: 20px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             color: rgb(25, 55, 130);
-            padding: 10px 20px;
+            padding: 12px 24px;
             text-decoration: none;
             border-radius: 25px;
             font-weight: 600;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .back-link:hover {
             background: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: white;
-            border: 2px solid rgb(25, 55, 130);
-            color: rgb(25, 55, 130);
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: rgb(25, 55, 130);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(25, 55, 130, 0.3);
-        }
-
-        .documents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .document-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .document-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
+        .hero {
             background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            margin-bottom: 0;
         }
 
-        .document-card:hover {
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .projects-section {
+            padding: 80px 0;
+        }
+
+        .project-block {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-block:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .document-header {
+        .project-content {
+            padding: 50px;
+        }
+
+        .project-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
-        .document-icon {
-            width: 50px;
-            height: 50px;
+        .project-number {
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
             flex-shrink: 0;
-            padding: 2px;
         }
 
-        .document-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        .project-title {
+            flex: 1;
         }
 
-        .document-title {
-            font-size: 1.3rem;
-            font-weight: 700;
+        .project-title h2 {
+            font-size: 2.5rem;
             color: rgb(25, 55, 130);
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
 
-        .document-category {
+        .project-category {
             background: #ff6b6b;
             color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
             font-weight: 600;
             display: inline-block;
-            margin-bottom: 1rem;
         }
 
-        .document-description {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.6;
+        .project-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .document-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e9ecef;
-            font-size: 0.9rem;
-            color: #666;
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
         }
 
-        .document-date {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .document-type {
+        .project-details {
             background: #f8f9fa;
-            padding: 4px 8px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid rgb(25, 55, 130);
+        }
+
+        .project-details h4 {
+            color: rgb(25, 55, 130);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgb(25, 55, 130);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
         }
 
-        .document-actions {
+        .project-results {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .project-results h4 {
+            color: #155724;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #28a745;
+            display: block;
+        }
+
+        .result-text {
+            font-size: 0.9rem;
+            color: #155724;
+            margin-top: 5px;
+        }
+
+        .project-actions {
             display: flex;
-            gap: 1rem;
+            gap: 20px;
+            align-items: center;
+            margin-top: 40px;
         }
 
         .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 14px 30px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
         }
 
         .btn-primary {
-            background: rgb(25, 55, 130);
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
             color: white;
         }
 
         .btn-primary:hover {
-            background: rgb(20, 45, 110);
+            background: linear-gradient(135deg, rgb(20, 45, 110) 0%, rgb(55, 95, 170) 100%);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(25, 55, 130, 0.3);
         }
 
         .btn-outline {
@@ -260,79 +255,79 @@
             transform: translateY(-2px);
         }
 
-        .contact-cta {
-            background: url('../Assets/Documents/Document_Hero_background.png') center center/cover no-repeat;
+        .cta-section {
+            background: linear-gradient(135deg, rgb(25, 55, 130) 0%, rgb(65, 105, 180) 100%);
             color: white;
-            padding: 3rem 2rem;
-            border-radius: 15px;
+            padding: 80px 0;
             text-align: center;
-            margin-top: 3rem;
-            position: relative;
+            margin-top: 60px;
         }
 
-        .contact-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(25, 55, 130, 0.7);
-            border-radius: 15px;
-            z-index: 1;
+        .cta-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
-        .contact-cta * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-cta h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-cta p {
-            margin-bottom: 2rem;
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
             opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 0 1rem;
             }
 
-            .header h1 {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .project-content {
+                padding: 30px;
+            }
+
+            .project-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .project-title h2 {
                 font-size: 2rem;
             }
 
-            .documents-grid {
+            .project-meta {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 30px;
             }
 
-            .document-card {
-                padding: 1.5rem;
-            }
-
-            .document-actions {
+            .project-actions {
                 flex-direction: column;
+                align-items: stretch;
             }
 
-            .filter-tabs {
-                gap: 0.5rem;
+            .results-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .filter-btn {
-                padding: 8px 16px;
-                font-size: 0.8rem;
+            .cta-section h3 {
+                font-size: 2rem;
             }
         }
 
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         @keyframes fadeInUp {
@@ -346,215 +341,296 @@
 <body>
     <a href="../index.html" class="back-link">← Back to Home</a>
 
-    <div class="header">
+    <div class="hero">
         <div class="container">
-            <h1>Project Documents & Case Studies</h1>
-            <p>Explore our portfolio of successful projects across web development, data analysis, mathematical consultancy, engineering, and geospatial analysis.</p>
+            <h1>Featured Projects</h1>
+            <p>Discover how we've helped businesses transform their operations through innovative technology solutions, advanced analytics, and strategic consulting expertise.</p>
         </div>
     </div>
 
-    <div class="container">
-        <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="web-dev">Web Development</button>
-            <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
-            <button class="filter-btn" data-filter="math-consultancy">Mathematical</button>
-            <button class="filter-btn" data-filter="engineering">Engineering</button>
-            <button class="filter-btn" data-filter="geospatial">Geospatial</button>
-            <button class="filter-btn" data-filter="app-dev">App Development</button>
+    <div class="projects-section">
+        <div class="container">
+            <!-- Project 1: E-commerce Platform -->
+            <div class="project-block fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-number">01</div>
+                        <div class="project-title">
+                            <h2>RetailMax E-commerce Platform</h2>
+                            <div class="project-category">Web Development</div>
+                        </div>
+                    </div>
+
+                    <div class="project-meta">
+                        <div class="project-description">
+                            We developed a comprehensive e-commerce platform for RetailMax, a growing Australian retailer. The solution included a custom-built React frontend, Node.js backend, integrated payment processing, inventory management, and advanced analytics dashboard. The platform handles thousands of concurrent users and processes over $2M in monthly transactions.
+                        </div>
+                        <div class="project-details">
+                            <h4>Technologies Used</h4>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Stripe API</span>
+                                <span class="tech-tag">Redis</span>
+                            </div>
+                            <p><strong>Timeline:</strong> 6 months</p>
+                            <p><strong>Team Size:</strong> 3 developers</p>
+                        </div>
+                    </div>
+
+                    <div class="project-results">
+                        <h4>Key Results Achieved</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-number">180%</span>
+                                <div class="result-text">Increase in Online Sales</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">45%</span>
+                                <div class="result-text">Reduction in Cart Abandonment</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">99.9%</span>
+                                <div class="result-text">Platform Uptime</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">2.3s</span>
+                                <div class="result-text">Average Page Load Time</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="../contact.html" class="btn btn-primary">🚀 Start Similar Project</a>
+                        <a href="../contact.html" class="btn btn-outline">📞 Discuss Requirements</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Financial Analytics Dashboard -->
+            <div class="project-block fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-number">02</div>
+                        <div class="project-title">
+                            <h2>Investment Analytics Dashboard</h2>
+                            <div class="project-category">Financial Modeling</div>
+                        </div>
+                    </div>
+
+                    <div class="project-meta">
+                        <div class="project-description">
+                            Created a sophisticated financial analytics dashboard for Melbourne Investment Partners, featuring real-time portfolio tracking, risk assessment algorithms, and predictive modeling. The system processes market data from multiple sources, applies advanced mathematical models, and provides actionable insights for investment decisions worth over $50M AUD.
+                        </div>
+                        <div class="project-details">
+                            <h4>Technologies & Methods</h4>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">Monte Carlo</span>
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">Bloomberg API</span>
+                                <span class="tech-tag">Docker</span>
+                            </div>
+                            <p><strong>Timeline:</strong> 4 months</p>
+                            <p><strong>Team Size:</strong> 2 specialists</p>
+                        </div>
+                    </div>
+
+                    <div class="project-results">
+                        <h4>Key Results Achieved</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-number">25%</span>
+                                <div class="result-text">Improvement in Risk-Adjusted Returns</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">60%</span>
+                                <div class="result-text">Faster Decision Making</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">$2.5M</span>
+                                <div class="result-text">Additional Revenue Generated</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">15</span>
+                                <div class="result-text">KPIs Monitored in Real-time</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="../contact.html" class="btn btn-primary">📈 Build Your Dashboard</a>
+                        <a href="../contact.html" class="btn btn-outline">💼 Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Mobile App for Logistics -->
+            <div class="project-block fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-number">03</div>
+                        <div class="project-title">
+                            <h2>LogiTrack Mobile Solution</h2>
+                            <div class="project-category">App Development</div>
+                        </div>
+                    </div>
+
+                    <div class="project-meta">
+                        <div class="project-description">
+                            Developed a comprehensive mobile application for Brisbane Logistics Solutions to track deliveries, manage drivers, and optimize routes. The cross-platform app includes GPS tracking, real-time notifications, electronic signature capture, and integration with existing ERP systems. Currently used by 200+ drivers across Queensland.
+                        </div>
+                        <div class="project-details">
+                            <h4>Technologies Used</h4>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">Google Maps API</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Push Notifications</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                            <p><strong>Timeline:</strong> 5 months</p>
+                            <p><strong>Team Size:</strong> 4 developers</p>
+                        </div>
+                    </div>
+
+                    <div class="project-results">
+                        <h4>Key Results Achieved</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-number">35%</span>
+                                <div class="result-text">Reduction in Delivery Times</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">95%</span>
+                                <div class="result-text">Driver Adoption Rate</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">$180K</span>
+                                <div class="result-text">Annual Fuel Savings</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">4.8★</span>
+                                <div class="result-text">App Store Rating</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="../contact.html" class="btn btn-primary">📱 Develop Your App</a>
+                        <a href="../contact.html" class="btn btn-outline">🔍 Explore Options</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Data Analytics Platform -->
+            <div class="project-block fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-number">04</div>
+                        <div class="project-title">
+                            <h2>AgriData Intelligence Platform</h2>
+                            <div class="project-category">Data Analysis</div>
+                        </div>
+                    </div>
+
+                    <div class="project-meta">
+                        <div class="project-description">
+                            Built an advanced data analytics platform for Australian Agricultural Cooperative, processing satellite imagery, weather data, soil sensors, and crop yield information. The system uses machine learning to predict optimal planting times, irrigation schedules, and harvest yields, helping farmers increase productivity while reducing environmental impact across 50,000+ hectares.
+                        </div>
+                        <div class="project-details">
+                            <h4>Technologies & Methods</h4>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Tableau</span>
+                                <span class="tech-tag">AWS S3</span>
+                                <span class="tech-tag">Apache Kafka</span>
+                            </div>
+                            <p><strong>Timeline:</strong> 8 months</p>
+                            <p><strong>Team Size:</strong> 3 data scientists</p>
+                        </div>
+                    </div>
+
+                    <div class="project-results">
+                        <h4>Key Results Achieved</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-number">22%</span>
+                                <div class="result-text">Increase in Crop Yields</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">30%</span>
+                                <div class="result-text">Reduction in Water Usage</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">85%</span>
+                                <div class="result-text">Prediction Accuracy</div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">$3.2M</span>
+                                <div class="result-text">Annual Cost Savings</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="../contact.html" class="btn btn-primary">📊 Analyze Your Data</a>
+                        <a href="../contact.html" class="btn btn-outline">🌱 Learn More</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div class="documents-grid">
-            <div class="document-card fade-in" data-category="web-dev">
-                <div class="document-header">
-                    <div class="document-icon"><img src="../Assets/Document_Images/TukTukRental_Icon_Documents.png" alt="TukTuk Rental AI Chatbot"></div>
-                    <div>
-                        <div class="document-title">TukTuk Rental AI Chatbot</div>
-                        <div class="document-category">Web Development</div>
-                    </div>
-                </div>
-                <div class="document-description">
-                    AI-powered chatbot development for tuktukrental.com featuring natural language processing, booking integration, and multilingual support for enhanced customer experience.
-                </div>
-                <div class="document-details">
-                    <div class="document-date">📅 March 2024</div>
-                    <div class="document-type">Web Development</div>
-                </div>
-                <div class="document-actions">
-                    <a href="https://tuktukrental.com/" class="btn btn-primary" target="_blank">📄 View Website</a>
-
-                </div>
-            </div>
-
-            <div class="document-card fade-in" data-category="data-analysis">
-                <div class="document-header">
-                    <div class="document-icon"><img src="../Assets/Document_Images/RetailSales_Icon_Documents.png" alt="Retail Sales Forecasting"></div>
-                    <div>
-                        <div class="document-title">Retail Sales Forecasting Model</div>
-                        <div class="document-category">Data Analysis</div>
-                    </div>
-                </div>
-                <div class="document-description">
-                    Statistical analysis and predictive modeling for retail chain optimization, implementing machine learning algorithms to forecast seasonal demand patterns and inventory requirements.
-                </div>
-                <div class="document-details">
-                    <div class="document-date">📅 February 2024</div>
-                    <div class="document-type">Technical Report</div>
-                </div>
-                <div class="document-actions">
-                    <a href="#" class="btn btn-primary" target="_blank">📄 View Document</a>
-
-                </div>
-            </div>
-
-            <div class="document-card fade-in" data-category="math-consultancy">
-                <div class="document-header">
-                    <div class="document-icon"><img src="../Assets/Document_Images/FinancialRisk_Icon_Documents.png" alt="Financial Risk Assessment"></div>
-                    <div>
-                        <div class="document-title">Financial Risk Assessment Algorithm</div>
-                        <div class="document-category">Mathematical Consultancy</div>
-                    </div>
-                </div>
-                <div class="document-description">
-                    Development of a sophisticated mathematical model for portfolio risk assessment using stochastic calculus and Monte Carlo simulations for investment management firm.
-                </div>
-                <div class="document-details">
-                    <div class="document-date">📅 January 2024</div>
-                    <div class="document-type">Mathematical Model</div>
-                </div>
-                <div class="document-actions">
-                    <a href="#" class="btn btn-primary" target="_blank">📄 View Document</a>
-
-                </div>
-            </div>
-
-            <div class="document-card fade-in" data-category="engineering">
-                <div class="document-header">
-                    <div class="document-icon"><img src="../Assets/Document_Images/TailingsBreach_Icon_Documents.png" alt="Tailings Dam Breach"></div>
-                    <div>
-                        <div class="document-title">Tailings Dam Breach Modelling</div>
-                        <div class="document-category">Environmental Engineering</div>
-                    </div>
-                </div>
-                <div class="document-description">
-                    Comprehensive dam breach analysis and tailings flow modelling using advanced hydraulic simulation software to assess potential environmental impact and emergency response planning.
-                </div>
-                <div class="document-details">
-                    <div class="document-date">📅 December 2023</div>
-                    <div class="document-type">Engineering Report</div>
-                </div>
-                <div class="document-actions">
-                    <a href="../Assets/Documents/DamBreach_Document.png" class="btn btn-primary" target="_blank">📄 View Report</a>
-
-                </div>
-            </div>
-
-            <div class="document-card fade-in" data-category="geospatial">
-                <div class="document-header">
-                    <div class="document-icon"><img src="../Assets/Document_Images/Moovement.comTagAnalysis_Icon_Documents.png" alt="Cattle Tag Analysis"></div>
-                    <div>
-                        <div class="document-title">mOOvement.com Cattle Tag Analysis</div>
-                        <div class="document-category">Geospatial Analysis</div>
-                    </div>
-                </div>
-                <div class="document-description">
-                    GPS tracking analysis and movement pattern assessment for livestock management using satellite data and GIS analytics to optimize grazing patterns and monitor animal welfare.
-                </div>
-                <div class="document-details">
-                    <div class="document-date">📅 November 2023</div>
-                    <div class="document-type">GIS Study</div>
-                </div>
-                <div class="document-actions">
-                    <a href="#" class="btn btn-primary" target="_blank">📄 View Document</a>
-
-                </div>
-            </div>
-
-            <div class="document-card fade-in" data-category="engineering">
-                <div class="document-header">
-                    <div class="document-icon"><img src="../Assets/Document_Images/Erosion_Icon_Documents.png" alt="Sediment and Erosion Control"></div>
-                    <div>
-                        <div class="document-title">Sediment and Erosion Control Plan</div>
-                        <div class="document-category">Environmental Engineering</div>
-                    </div>
-                </div>
-                <div class="document-description">
-                    Comprehensive sediment and erosion management strategy for construction sites including RUSLE modelling, sediment basin design, and environmental protection measures.
-                </div>
-                <div class="document-details">
-                    <div class="document-date">📅 October 2023</div>
-                    <div class="document-type">Management Plan</div>
-                </div>
-                <div class="document-actions">
-                    <a href="../Assets/Documents/Erosion_Management_Plan.jpg" class="btn btn-primary" target="_blank">📄 View Plan</a>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-cta">
-            <h3>Ready to Start Your Project?</h3>
-            <p>These examples represent just a fraction of our capabilities. Let's discuss how we can help bring your vision to life with our multi-disciplinary expertise.</p>
-            <a href="../contact.html" class="btn" style="background: white; color: rgb(25, 55, 130); font-weight: 600;">Get Started Today</a>
+    <div class="cta-section">
+        <div class="container">
+            <h3>Ready to Start Your Next Project?</h3>
+            <p>These case studies represent just a glimpse of what we can achieve together. Let's discuss your unique challenges and create a custom solution that drives real results for your business.</p>
+            <a href="../contact.html" class="btn" style="background: white; color: rgb(25, 55, 130); font-weight: 600; font-size: 1.1rem; padding: 16px 40px;">Get Your Free Consultation</a>
         </div>
     </div>
 
     <script>
-        // Filter functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const documentCards = document.querySelectorAll('.document-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-
-                const filterValue = button.getAttribute('data-filter');
-
-                documentCards.forEach(card => {
-                    if (filterValue === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        const cardCategory = card.getAttribute('data-category');
-                        if (cardCategory === filterValue) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-            });
-        });
-
-        // Fade in animation on load
-        window.addEventListener('load', () => {
-            const cards = document.querySelectorAll('.document-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.animationDelay = `${index * 0.1}s`;
-                }, index * 100);
-            });
-        });
-
         // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    setTimeout(() => {
+                        entry.target.style.animationDelay = `${index * 0.2}s`;
+                        entry.target.classList.add('fade-in');
+                    }, index * 100);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        // Observe all project blocks
+        document.querySelectorAll('.project-block').forEach(el => {
             observer.observe(el);
+        });
+
+        // Smooth scrolling for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>

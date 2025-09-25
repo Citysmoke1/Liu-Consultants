@@ -4,7 +4,9 @@
       "Bash(git init:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "Bash(start index.html)",
+      "Bash(start \"Header\\documents.html\")"
     ],
     "deny": [],
     "ask": []
